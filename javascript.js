@@ -1,3 +1,5 @@
+
+// Randomly assigns the Computer a number between 0 and 2 with 0 representing "rock", 1 representing "paper" and 2 representing "scissors"
 function getComputerChoice(){
     let randomChoice = Math.floor(Math.random() * 3);
 
@@ -10,13 +12,19 @@ function getComputerChoice(){
     }
 }
 
-userWins = 0;
-computerWins = 0;
+
+
+let userWins = 0;
+let computerWins = 0;
 
 function playRound(playerSelection, computerSelection){
 
+    // Asks the user whether they want to choose rock, paper, or scissors
+    //let playerChoice = prompt("Rock, Paper, Scissors");
+    playerChoice.toLowerCase(); // Convert users input to all lowercase letters
+
+    playerSelection = playerChoice;
     computerSelection = getComputerChoice();
-    playerSelection = prompt("Please enter your choice:");
 
     if(playerSelection == "rock" && computerSelection == "paper"){
         computerWins++;
@@ -49,22 +57,16 @@ function playRound(playerSelection, computerSelection){
 
 }
 
-
+// Plays a round 5 times and displays the winner at the end stating how many wins both players had
 function game(){
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-}
-
-function winner(){
+    for (i = 0; i < 5; i++){
+        playRound();
+    }
     if(userWins > computerWins){
-        console.log("You win!");
+        console.log("You win, " + userWins + " to " + computerWins + "!");
     } else{
-        console.log("You lose!");
+        console.log("You lose, " + computerWins + " to " + userWins + "!");
     }
 }
 
 game();
-winner();
